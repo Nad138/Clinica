@@ -34,10 +34,13 @@ edad.onkeypress = numero;
 
 var inputs = document.getElementsByClassName("input-registro");
 console.log(inputs);
-inputs[0].onblur = function(e){
+var validarImput = function(){
   if(this.value.trim().length==0){
     this.value = "";
     this.nextElementSibling.nextElementSibling.innerText = "*Este campo es obligatorio";
+  }
+  else{
+    this.nextElementSibling.nextElementSibling.innerText = "";
   }
 }
 

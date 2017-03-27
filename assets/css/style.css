@@ -15,6 +15,9 @@ form{
   display: inline-block;
   text-align: left;
 }
+span{
+  text-color: red;
+}
 button{
   margin:0px auto;
   display: inline-block;
