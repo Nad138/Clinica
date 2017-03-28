@@ -14,4 +14,9 @@ window.onload=function(){
   genero.innerText = objetoPaciente.genero;
   ciudad.innerText = objetoPaciente.ciudad;
   pais.innerText = objetoPaciente.pais;
+
+  document.getElementById("nuevoRegistro").addEventListener("click", function(){
+    window.location="index.html"
+  });
+
 }
