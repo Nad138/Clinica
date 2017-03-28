@@ -1,13 +1,14 @@
 window.onload=function(){
-var pacientes = [];
-function crearFicha(evento){
-  evento.preventDefault();
-  var nombre = document.getElementById("nombre").value;
-  var apellido = document.getElementById("apellido").value;
-  var edad = document.getElementById("edad").value;
-  var genero = document.getElementById("genero").select;
-  var ciudad = document.getElementById("ciudad").value;
-  var pais = document.getElementById("pais").value;
+   var pacientes = [];
+    function crearFicha(evento){
+          evento.preventDefault();
+
+       var nombre = document.getElementById("nombre").value;
+       var apellido = document.getElementById("apellido").value;
+       var edad = document.getElementById("edad").value;
+       var genero = document.getElementById("genero").value;
+       var ciudad = document.getElementById("ciudad").value;
+       var pais = document.getElementById("pais").value;
 
  function Paciente (nombre, apellido, edad, genero, ciudad, pais){
           this.nombre = nombre;
@@ -17,20 +18,22 @@ function crearFicha(evento){
           this.ciudad = ciudad;
           this.pais = pais;
          };
-  var nuevo = new Paciente(nombre,apellido, edad, genero, ciudad, pais);
-        pacientes.push(nuevo);
+  var nuevo = new Paciente(nombre, apellido, edad, genero, ciudad, pais);
+        /*pacientes.push(nuevo);*/
 
-  if(nombre.length!=0 || apellido.length!=0 || edad.length!=0 || ciudad.length!=0 || pais.length!=0 || genero.lenth!=1){
-    var mostrar = document.createElement("div");
-    /*mostrar.innerHTML = "<br>" + "Nombre: " + pacientes[pacientes.length-1].nombre + " " + pacientes[pacientes.length-1].apellido + "<br>" + "Edad: " + pacientes[pacientes.length-1].edad + " años" + "<br>" + "País: " + pacientes[pacientes.length-1].pais;*/
-     localStorage.setItem("nuevoPaciente", JSON.stringify(new Paciente(nombre,apellido, edad, genero, ciudad, pais)));
-      }
-  else{
-    var mensaje = document.getElementById("alerta");
-    mensaje.innerText="*Todos los campos son obligatorios"
-     }
-   document.body.appendChild(mostrar);
- formulario.reset();
+                if(nombre.length!=0 && apellido.length!=0 && edad.length!=0 && ciudad.length!=0 && pais.length!=0 && genero.length!=0){
+                                  var mostrar = document.createElement("div");
+                                  /*mostrar.innerHTML = "<br>" + "Nombre: " + pacientes[pacientes.length-1].nombre + " " + pacientes[pacientes.length-1].apellido + "<br>" + "Edad: " + pacientes[pacientes.length-1].edad + " años" + "<br>" + "País: " + pacientes[pacientes.length-1].pais;*/
+                                  localStorage.setItem("nuevoPaciente", JSON.stringify(new Paciente(nombre, apellido, edad, genero, ciudad, pais)));
+                                  document.body.appendChild(mostrar);
+                                  formulario.reset();
+                                 window.location="pacientes.html";
+                            }
+              else{
+                         var mensaje = document.getElementById("alerta");
+                           mensaje.innerText="*Todos los campos son obligatorios"
+                 }
+
 }
 
 document.getElementById("enviar").addEventListener("click", crearFicha)
@@ -75,7 +78,7 @@ edad.onkeypress = numero;
 
 var inputs = document.getElementsByClassName("input-registro");
 console.log(inputs);
-var validarImput = function(){
+var validarInput = function(){
            if(this.value.trim().length==0){
                    this.value = "";
                    this.nextElementSibling.nextElementSibling.innerText = "*Este campo es obligatorio";
